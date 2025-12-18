@@ -3,7 +3,7 @@
   "description": "XMR/LTC superchat plugin for PeerTube",
   "version": "0.1.0",
   "author": "PYU",
-  "bugs": "https://github.com/yourusername/peertube-plugin-xmr-superchat/issues",
+  "bugs": "https://github.com/pyu224/peertube-plugin-xmr-superchat/issues",
   "clientScripts": [
     {
       "script": "dist/client/common-client-plugin.js",
@@ -28,7 +28,7 @@
     "monero",
     "crypto"
   ],
-  "homepage": "https://github.com/yourusername/peertube-plugin-xmr-superchat",
+  "homepage": "https://github.com/pyu224/peertube-plugin-xmr-superchat",
   "license": "AGPL-3.0",
   "scripts": {
     "build": "npm run build:server && npm run build:client && npm run build:css",
