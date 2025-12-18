@@ -1,0 +1,59 @@
+{
+  "name": "peertube-plugin-xmr-superchat",
+  "description": "XMR/LTC superchat plugin for PeerTube",
+  "version": "0.1.0",
+  "author": "PYU",
+  "bugs": "https://github.com/yourusername/peertube-plugin-xmr-superchat/issues",
+  "clientScripts": [
+    {
+      "script": "dist/client/common-client-plugin.js",
+      "scopes": ["common"]
+    },
+    {
+      "script": "dist/client/video-watch-client-plugin.js", 
+      "scopes": ["video-watch"]
+    }
+  ],
+  "css": [
+    "dist/assets/styles/superchat.css"
+  ],
+  "engine": {
+    "peertube": ">=5.0.0"
+  },
+  "keywords": [
+    "peertube",
+    "plugin",
+    "superchat",
+    "xmr",
+    "monero",
+    "crypto"
+  ],
+  "homepage": "https://github.com/yourusername/peertube-plugin-xmr-superchat",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "build": "npm run build:server && npm run build:client && npm run build:css",
+    "build:client": "node ./scripts/build-client.mjs",
+    "build:server": "npx tsc -p server/tsconfig.json",
+    "build:css": "sass assets/styles:dist/assets/styles",
+    "clean": "rm -rf dist",
+    "test": "npm run lint",
+    "lint": "npx eslint . --ext .ts"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "qrcode": "^1.5.3",
+    "socket.io": "^4.6.0",
+    "socket.io-client": "^4.6.0"
+  },
+  "devDependencies": {
+    "@peertube/peertube-types": "^5.2.0",
+    "@types/node": "^20.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "esbuild": "^0.19.0",
+    "eslint": "^8.0.0",
+    "sass": "^1.69.0",
+    "typescript": "^5.2.0"
+  }
+}

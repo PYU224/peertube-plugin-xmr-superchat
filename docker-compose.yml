@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Monero Wallet RPC (テスト用)
+  # 本番ではリモートノードを使用してください
+  monero-wallet-rpc:
+    image: ghcr.io/sethforprivacy/simple-monero-wallet-rpc:latest
+    container_name: xmr-wallet-rpc
+    ports:
+      - "18082:18082"
+    volumes:
+      - ./wallets:/wallet
+    command: >
+      --daemon-address node.moneroworld.com:18089
+      --wallet-file /wallet/test.wallet
+      --password ""
+      --rpc-bind-port 18082
+      --rpc-bind-ip 0.0.0.0
+      --confirm-external-bind
+      --disable-rpc-login
+      --trusted-daemon
+    restart: unless-stopped
+
+  # Redis (Socket.IOセッション用、オプション)
+  redis:
+    image: redis:7-alpine
+    container_name: xmr-superchat-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: xmr-superchat-network
